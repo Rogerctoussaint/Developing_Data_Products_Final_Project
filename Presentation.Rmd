@@ -7,6 +7,12 @@ output: ioslides_presentation
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+
+suppressPackageStartupMessages(library(tigris))
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(sf))
+options(tigris_class = 'sf')
 ```
 
 ## Purpose
@@ -14,43 +20,29 @@ knitr::opts_chunk$set(echo = FALSE)
 - The election reults viewer can be used to view who won each election over whom, and which states voted for which party
 - This aggregation of several years' data by state is uncommon on the internet
 
-## Election Data
-
-- Election data is obtained from two sources
-    
-    * State data are scraped from wikipedia with the `htmltab` package
-    * Election winner and loser data are obtained with the `elections` package
-    
 ## Mapping
 
-- The tigris package is used for mapping. The following map was produced using it.
+- The tigris package is used for mapping. The following code mimics the mapping performed in the server.R function
 
-```{r, messages = FALSE, warning = FALSE, echo = FALSE, results= 'hide'}
-suppressPackageStartupMessages(library(tigris))
-suppressPackageStartupMessages(library(tidyverse))
-suppressPackageStartupMessages(library(ggplot2))
-suppressPackageStartupMessages(library(sf))
-
-options(tigris_class = 'sf')
+```{r, messages = FALSE, warning = FALSE, echo = TRUE, results= 'hide'}
 map <- states() %>%
     filter(!(STUSPS %in% c('GU','PR','VI','AK','HI','MP','AS'))) %>%
     st_as_sf() %>%
     ggplot() +
         geom_sf() + 
         theme(
-            axis.text.x = element_blank(),
-            axis.title.x = element_blank(),
-            axis.ticks.x = element_blank(),
-            axis.text.y = element_blank(),
-            axis.title.y = element_blank(),
-            axis.ticks.y = element_blank(),
-            legend.title = element_blank(),
-            panel.grid.major = element_blank(),
-            panel.grid.minor = element_blank(),
-            panel.background = element_blank(),
-            panel.border = element_blank()
+            axis.text.x=element_blank(),axis.title.x=element_blank(),
+            axis.ticks.x=element_blank(),axis.text.y=element_blank(),
+            axis.title.y=element_blank(),axis.ticks.y=element_blank(),
+            legend.title=element_blank(),
+            panel.grid.major=element_blank(),
+            panel.grid.minor=element_blank(), 
+            panel.background=element_blank(),
+            panel.border=element_blank()
         )
 ```
+
+## Map Output
 
 ```{r}
 map
@@ -58,5 +50,5 @@ map
 
 ## Links
 
-* The app can be found here
+* The app can be found [here](https://rogerctoussaint.shinyapps.io/Developing_Data_Products_Final_Project/)
 * The code can be found [here](https://github.com/Rogerctoussaint/Developing_Data_Products_Final_Project)

@@ -1,0 +1,10 @@
+name: Publish Document
+title:
+username:
+account: rpubs
+server: rpubs.com
+hostUrl: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/445750/95ad855a10634c17a2acac0c625e6b7e
+bundleId: https://api.rpubs.com/api/v1/document/445750/95ad855a10634c17a2acac0c625e6b7e
+url: http://rpubs.com/rogerctoussaint/445750
+when: 1543895675.92616

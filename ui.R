@@ -1,8 +1,6 @@
 suppressPackageStartupMessages(library(shiny))
-suppressPackageStartupMessages(library(lubridate))
 suppressPackageStartupMessages(library(tidyverse))
 suppressPackageStartupMessages(library(htmltab))
-suppressPackageStartupMessages(library(tidyverse))
 suppressPackageStartupMessages(library(data.table))
 suppressPackageStartupMessages(library(tigris))
 suppressPackageStartupMessages(library(sf))
